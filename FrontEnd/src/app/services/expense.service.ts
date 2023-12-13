@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map} from 'rxjs';
 import { Expense } from '../models/expense';
 import { response } from 'express';
 
@@ -15,7 +14,7 @@ export class ExpenseService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getExpenses(): Observable<Expense>{
+  getExpenses(): Observable<Expense[]>{
     return this._httpClient.get<Expense[]>(this.getUrl).pipe(
       map(response => response)
     )
